@@ -1,0 +1,7 @@
+{
+  "name": "cache",
+  "description": "Cache folders between builds",
+  "author": "@dreyks",
+  "public": true,
+  "requirements": []
+}
