@@ -1,2 +1,10 @@
 #!/bin/bash
 set -ueo pipefail
+
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+
+. "$DIR/../lib/shared.bash"
+
+for line in $(plugin_read_list DIRECTORIES) ; do
+  buildkite-agent artifact download "$line" .
+done
