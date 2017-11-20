@@ -4,7 +4,7 @@ load '/usr/local/lib/bats/load.bash'
 load '../lib/shared'
 
 @test "Download a single directory" {
-  export BUILDKITE_PLUGIN_CACHE_DIRECTORIES=tmp/caches/assets/*
+  export BUILDKITE_PLUGIN_CACHE_RESTORE=tmp/caches/assets/*
 
   stub buildkite-agent \
     "artifact download tmp/caches/assets/* . : echo downloaded tmp/caches/assets/*"
@@ -17,8 +17,8 @@ load '../lib/shared'
 }
 
 @test "Download several directories" {
-  export BUILDKITE_PLUGIN_CACHE_DIRECTORIES_0=tmp/caches/assets/*
-  export BUILDKITE_PLUGIN_CACHE_DIRECTORIES_1=public/assets/*
+  export BUILDKITE_PLUGIN_CACHE_RESTORE_0=tmp/caches/assets/*
+  export BUILDKITE_PLUGIN_CACHE_RESTORE_1=public/assets/*
 
   stub buildkite-agent \
     "artifact download tmp/caches/assets/* . : echo downloaded tmp/caches/assets/*" \
