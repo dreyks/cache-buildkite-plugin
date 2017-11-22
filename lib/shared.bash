@@ -17,3 +17,13 @@ function plugin_read_list() {
     echo "${!prefix}"
   fi
 }
+
+function build_command_override_file() {
+  printf "#!/bin/bash\n"
+  printf "set -ueo pipefail\n\n"
+  printf "echo \"~~~ Saving caches\"\n"
+
+  for line in $(plugin_read_list SAVE) ; do
+    printf "printf \"  %%s\\\n\" $line\n"
+  done
+}
