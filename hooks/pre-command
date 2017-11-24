@@ -5,9 +5,9 @@ DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
 . "$DIR/../lib/shared.bash"
 
-if [[ ! $(plugin_read_list SAVE) ]] ; then
-  exit 0
-fi
+# if [[ ! $(plugin_read_list SAVE) ]] ; then
+#   exit 0
+# fi
 
 command_file="command_override.sh"
 
