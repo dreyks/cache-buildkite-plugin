@@ -5,9 +5,6 @@ DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
 . "$DIR/../lib/shared.bash"
 
-# if [[ ! $(plugin_read_list SAVE) ]] ; then
-#   exit 0
-# fi
 
 command_file="command_override.sh"
 
@@ -15,4 +12,6 @@ echo "~~~ Creating a command override"
 build_command_override_file | tee "$command_file"
 chmod +x "$command_file"
 
-export BUILDKITE_COMMAND="$command_file"
+if [[ $(plugin_read_list SAVE) ]] ; then
+  export BUILDKITE_COMMAND="./$command_file"
+fi
